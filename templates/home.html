@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health Classifiers</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #000;
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            background-image: 
+                radial-gradient(circle at 25% 25%, rgba(120, 0, 200, 0.2) 0%, transparent 20%),
+                radial-gradient(circle at 75% 75%, rgba(100, 0, 180, 0.2) 0%, transparent 20%);
+        }
+        
+        /* الهيدر */
+        header {
+            background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+            padding: 20px 0;
+            box-shadow: 0 4px 20px rgba(138, 43, 226, 0.4);
+            border-bottom: 1px solid #6a3093;
+        }
+        
+        .header-content {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logo i {
+            font-size: 2.2rem;
+            color: #9370db;
+            text-shadow: 0 0 10px rgba(147, 112, 219, 0.7);
+        }
+        
+        .logo h1 {
+            font-size: 1.8rem;
+            background: linear-gradient(45deg, #9370db, #8a2be2);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 5px rgba(147, 112, 219, 0.5);
+        }
+        
+        /* المحتوى الرئيسي */
+        .container {
+            width: 90%;
+            max-width: 500px;
+            margin: 40px auto;
+            padding: 30px;
+            background: rgba(20, 20, 20, 0.8);
+            border-radius: 15px;
+            box-shadow: 0 0 30px rgba(138, 43, 226, 0.3);
+            border: 1px solid #4b0082;
+            flex-grow: 1;
+        }
+        
+        .main-title {
+            text-align: center;
+            margin-bottom: 40px;
+            color: #e6e6fa;
+            font-size: 2rem;
+            text-shadow: 0 0 10px rgba(147, 112, 219, 0.7);
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .main-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #9370db, transparent);
+        }
+        
+        .main-btns {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            width: 300px;
+            font-size: 1.2em;
+            padding: 20px 25px;
+            border: none;
+            border-radius: 50px;
+            background: linear-gradient(135deg, #6a3093, #4b0082);
+            color: white;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(106, 48, 147, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                45deg,
+                transparent, 
+                rgba(255, 255, 255, 0.2), 
+                transparent
+            );
+            transform: rotate(45deg);
+            transition: all 0.5s ease;
+            animation: shine 3s infinite;
+        }
+        
+        @keyframes shine {
+            0% {
+                left: -50%;
+            }
+            100% {
+                left: 150%;
+            }
+        }
+        
+        .btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(106, 48, 147, 0.6);
+        }
+        
+        .btn:hover::before {
+            animation: shine 0.75s;
+        }
+        
+        .btn:active {
+            transform: translateY(0);
+            box-shadow: 0 5px 15px rgba(106, 48, 147, 0.4);
+        }
+        
+        .btn i {
+            font-size: 1.5rem;
+        }
+        
+        /* الفوتر */
+        footer {
+            background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+            padding: 20px 0;
+            text-align: center;
+            margin-top: auto;
+            border-top: 1px solid #6a3093;
+            box-shadow: 0 -4px 20px rgba(138, 43, 226, 0.4);
+        }
+        
+        footer p {
+            color: #9370db;
+            font-size: 0.9rem;
+        }
+        
+        /* تأثيرات响应ive */
+        @media (max-width: 600px) {
+            .container {
+                width: 95%;
+                padding: 20px;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 280px;
+            }
+            
+            .main-title {
+                font-size: 1.7rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- الهيدر -->
+    <header>
+        <div class="header-content">
+            <a href="{{ url_for('home') }}" style="text-decoration:none;">
+                <div class="logo">
+                    <i class="fas fa-heartbeat"></i>
+                    <h1>Health AI Classifiers</h1>
+                </div>
+            </a>
+        </div>
+    </header>
+    
+    <!-- المحتوى الرئيسي -->
+    <div class="container">
+        <h1 class="main-title">Select Classifier</h1>
+        <div class="main-btns">
+            <a href="{{ url_for('anemia') }}" class="btn">
+                <i class="fas fa-eye"></i>
+                Anemia img Classifier
+            </a>
+            <a href="{{ url_for('malnutrition') }}" class="btn">
+                <i class="fas fa-child"></i>
+                Anemia data Classifier
+            </a>
+        </div>
+    </div>
+    
+    <!-- الفوتر -->
+    <footer>
+        <p>© 2025 Health AI Classifiers | Advanced Medical Diagnostics</p>
+    </footer>
+</body>
+</html>
