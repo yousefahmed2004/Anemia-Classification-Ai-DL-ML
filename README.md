@@ -1,7 +1,16 @@
 # Anemia Classification Project 🩸
 
+
+# ML Dataset
+https://www.kaggle.com/datasets/programmer3/malnutrition-risk-in-ethiopian-children
+
+# DL Dataset
+https://www.kaggle.com/datasets/harshwardhanfartale/eyes-defy-anemia
+
+
+
+
 ### Project Screenshots
-بناءً على الصور التي قمت برفعها، إليك عرض لكل واجهات المشروع:
 
 ![Step 1](screenshot/Screenshot%202025-09-18%20160346.png)
 
